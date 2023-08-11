@@ -1,19 +1,52 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {ThemeProvider, createTheme, CssBaseline} from "@mui/material";
+import {Provider} from "react-redux";
+import store from "./redux/store";
+
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#AD9FFF',
+        },
+        secondary: {
+            main: '#644DED'
+        },
+        success: {
+            main: '#AD9FFF',
+        }
+    },
+    components: {
+        MuiAutocomplete: {
+            styleOverrides: {
+                input: {
+                    color: '#242533',
+                },
+                clearIndicator: {
+                    color: '#242533',
+                },
+            },
+        },
+        MuiInputLabel: {
+            styleOverrides: {
+                root: {
+                    color: '#242533',
+                },
+            },
+        },
+    },
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <ThemeProvider theme={theme}>
+        <CssBaseline/>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </ThemeProvider>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
