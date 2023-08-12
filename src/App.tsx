@@ -9,7 +9,7 @@ function App() {
 
 
   return (
-   <Box sx={{bgcolor: '#F9F9FC'}}>
+   <Box sx={{bgcolor: '#F9F9FC', height:'100vh'}}>
        <Container >
            <Header/>
            <TableList/>
